@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voltify | by Chauhan Electricals</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f2f4f8;
+  color:#222;
+}
+
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+}
+
+.header img{
+  height:45px;
+  margin-right:12px;
+}
+
+.brand h1{
+  margin:0;
+  color:#fff;
+  font-size:22px;
+  letter-spacing:1px;
+}
+
+.brand span{
+  font-size:12px;
+  color:#b0dfff;
+}
+
+/* PRODUCTS */
+.container{
+  padding:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.card img{
+  width:100%;
+  height:120px;
+  object-fit:contain;
+  margin-bottom:10px;
+}
+
+.card h3{
+  font-size:15px;
+  margin:4px 0;
+}
+
+.price{
+  color:#1faa59;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+button{
+  width:100%;
+  border:none;
+  border-radius:6px;
+  padding:9px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.add-btn{
+  background:#1f6cff;
+  color:white;
+}
+
+/* CART */
+.cart{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+  border-top:2px solid #ddd;
+  padding:10px;
+}
+
+.cart-items{
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.buy-btn{
+  background:#25D366;
+  color:white;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:90px;
+  background:#0f2027;
+  color:#ccc;
+  text-align:center;
+  padding:14px;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="voltify-logo.png" alt="Voltify Logo">
+  <div class="brand">
+    <h1>Voltify</h1>
+    <span>by Chauhan Electricals</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="container">
+
+  <div class="card">
+    <img src="placeholder.png">
+    <h3>Copper Winding Wire</h3>
+    <div class="price">₹450</div>
+    <button class="add-btn" onclick="addToCart('Copper Winding Wire',450)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="placeholder.png">
+    <h3>EV Bike Battery Pack</h3>
+    <div class="price">₹12,500</div>
+    <button class="add-btn" onclick="addToCart('EV Bike Battery Pack',12500)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="placeholder.png">
+    <h3>Capacitor</h3>
+    <div class="price">₹220</div>
+    <button class="add-btn" onclick="addToCart('Capacitor',220)">Add to Cart</button>
+  </div>
+
+</div>
+
+<!-- CART BAR -->
+<div class="cart">
+  <div id="cartItems" class="cart-items">Cart is empty</div>
+  <button class="buy-btn" onclick="buyNow()">Buy on WhatsApp</button>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name, price){
+  cart.push({name,price});
+  let html = '';
+  cart.forEach(item=>{
+    html += item.name + ' - ₹' + item.price + '<br>';
+  });
+  document.getElementById('cartItems').innerHTML = html;
+}
+
+function buyNow(){
+  if(cart.length === 0){
+    alert('Cart is empty');
+    return;
+  }
+  let msg = 'Namaste, mujhe Voltify (Chauhan Electricals) se niche diye gaye products chahiye:%0A';
+  cart.forEach(item=>{
+    msg += item.name + ' - ₹' + item.price + '%0A';
+  });
+  window.open('https://wa.me/918604368588?text=' + msg);
+}
+</script>
+
+<div class="footer">
+  📞 8604368588 <br>
+  © 2026 Voltify by Chauhan Electricals
+</div>
+
+</body>
+</html>
